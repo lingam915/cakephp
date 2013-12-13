@@ -10,12 +10,12 @@ class studentsController extends AppController {
 	}
 	public function view($id = null) {
 		if (!$id) {
-			throw new NotFoundException(__('Invalid post'));
+			throw new NotFoundException(__('Invalid record'));
 		}
 	
 		$post = $this->student->findById($id);
 		if (!$post) {
-			throw new NotFoundException(__('Invalid post'));
+			throw new NotFoundException(__('Invalid record'));
 		}
 		$this->set('student', $post);
 	}
@@ -26,26 +26,26 @@ class studentsController extends AppController {
 				$this->Session->setFlash(__('Your record has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash(__('Unable to add your post.'));
+			$this->Session->setFlash(__('Unable to add your record.'));
 		}
 	}
 	public function edit($id = null) {
 		if (!$id) {
-			throw new NotFoundException(__('Invalid post'));
+			throw new NotFoundException(__('Invalid record'));
 		}
 	
 		$post = $this->student->findById($id);
 		if (!$post) {
-			throw new NotFoundException(__('Invalid post'));
+			throw new NotFoundException(__('Invalid record'));
 		}
 	
 		if ($this->request->is(array('student', 'put'))) {
 			$this->student->id = $id;
 			if ($this->student->save($this->request->data)) {
-				$this->Session->setFlash(__('Your post has been updated.'));
+				$this->Session->setFlash(__('Your student record has been updated.'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash(__('Unable to update your post.'));
+			$this->Session->setFlash(__('Unable to update your record.'));
 		}
 	
 		if (!$this->request->data) {
@@ -58,7 +58,7 @@ class studentsController extends AppController {
 		}
 	
 		if ($this->student->delete($id)) {
-			$this->Session->setFlash(__('The post with id: %s has been deleted.', h($id)));
+			$this->Session->setFlash(__('The record with id: %s has been deleted.', h($id)));
 			return $this->redirect(array('action' => 'index'));
 		}
 	}
