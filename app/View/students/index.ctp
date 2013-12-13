@@ -1,5 +1,5 @@
 
-<h1>Blog posts</h1>
+<h1>Student records</h1>
 <p><?php echo $this->Html->link('Add student', array('action' => 'add')); ?></p>
 <table width="400" height = "300">
     <tr>
